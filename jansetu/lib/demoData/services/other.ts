@@ -1,0 +1,77 @@
+import { GovernmentService } from '../../types';
+
+export const OTHER_SERVICES: GovernmentService[] = [
+  {
+    id: 'uidai_aadhaar_reprint',
+    name: 'Lost Aadhaar Card Official Retrieval & PVC Reprint (UIDAI)',
+    department: 'Unique Identification Authority of India (UIDAI)',
+    authority: 'UIDAI, Ministry of Electronics and IT (MeitY)',
+    category: 'identity_documents', secondaryCategories: ['other'],
+    description: 'Retrieve lost Aadhaar number using linked mobile number or biometric match, download verified e-Aadhaar, or order official PVC reprint card for ₹50.',
+    benefitsSummary: 'Instant verified digital e-Aadhaar PDF + optional official PVC card delivered via Speed Post.',
+    jurisdictionLevel: 'CENTRAL', applicableStates: ['ALL'], residenceRequired: false,
+    studyLocationEligible: false, employmentLocationEligible: false, propertyLocationEligible: false,
+    agricultureLocationEligible: false, businessLocationEligible: false, status: 'ACTIVE', effectiveFrom: '2010-09-29',
+    officialVerificationStatus: 'OFFICIALLY_VERIFIED',
+    verificationEvidence: 'OFFICIAL_PORTAL',
+    eligibleCategories: ['General', 'OBC', 'SC', 'ST', 'EWS'],
+    applicationUrl: 'https://myaadhaar.uidai.gov.in',
+    eligibilityRules: [], requiredDocuments: ['aadhaar'],
+    steps: [
+      {
+        stepNumber: 1, title: 'Retrieve Lost Aadhaar Number (UID) via MyAadhaar',
+        description: 'Use your registered mobile number and OTP on myaadhaar.uidai.gov.in to receive your 12-digit Aadhaar number.',
+        requiredDocuments: [], estimatedEffort: '5 minutes', isOnline: true, portalUrl: 'https://myaadhaar.uidai.gov.in',
+        tip: 'If your mobile is not linked, visit any authorized Aadhaar Seva Kendra for biometric reprint.',
+      },
+      {
+        stepNumber: 2, title: 'Download Password-Protected e-Aadhaar PDF',
+        description: 'Download legally valid signed e-Aadhaar (Password format: First 4 letters of name in capital + Year of birth).',
+        requiredDocuments: ['aadhaar'], estimatedEffort: '2 minutes', isOnline: true, portalUrl: 'https://myaadhaar.uidai.gov.in',
+      },
+      {
+        stepNumber: 3, title: 'Order Official PVC Card (Optional ₹50 Fee)',
+        description: 'Order durable, pocket-sized PVC card with QR code delivered to registered address.',
+        requiredDocuments: [], estimatedEffort: '5-7 business days delivery', isOnline: true,
+      },
+    ],
+    sourceUrl: 'https://myaadhaar.uidai.gov.in', sourceAuthority: 'Unique Identification Authority of India (UIDAI)',
+    sourceType: 'verified', sourceConfidence: 'High', lastVerified: '2026-08-30', version: '2026.1',
+    tags: ['aadhaar', 'uidai', 'lost-document', 'identity', 'pvc-card'],
+  },
+  {
+    id: 'national_apprenticeship_naps',
+    name: 'National Apprenticeship Promotion Scheme (NAPS)',
+    department: 'Ministry of Skill Development & Entrepreneurship', authority: 'MSDE, Govt of India',
+    category: 'employment', secondaryCategories: ['financial_assistance'],
+    description: 'On-the-job industrial apprenticeship with stipend support for technical graduates, diploma holders, and job seekers.',
+    benefitsSummary: 'Monthly stipend of ₹6,000 to ₹15,000 with 25% govt support (up to ₹1,500/month).',
+    jurisdictionLevel: 'CENTRAL', applicableStates: ['ALL'], residenceRequired: false,
+    studyLocationEligible: false, employmentLocationEligible: true, propertyLocationEligible: false,
+    agricultureLocationEligible: false, businessLocationEligible: false, status: 'ACTIVE', effectiveFrom: '2016-08-19',
+    officialVerificationStatus: 'OFFICIALLY_VERIFIED',
+    verificationEvidence: 'OFFICIAL_PORTAL',
+    eligibleCategories: ['General', 'OBC', 'SC', 'ST', 'EWS'],
+    applicationUrl: 'https://www.apprenticeshipindia.gov.in',
+    eligibilityRules: [
+      { field: 'age', operator: 'greater_than_or_equal', value: 18, label: 'Minimum 18 years of age', isMandatory: true },
+    ],
+    requiredDocuments: ['aadhaar', 'education_marksheet', 'bank_passbook'],
+    steps: [
+      {
+        stepNumber: 1, title: 'Register Profile on Apprenticeship India Portal',
+        description: 'Create candidate profile on apprenticeshipindia.gov.in with education details.',
+        requiredDocuments: ['aadhaar', 'education_marksheet', 'bank_passbook'], estimatedEffort: '30 minutes',
+        isOnline: true, portalUrl: 'https://www.apprenticeshipindia.gov.in',
+      },
+      {
+        stepNumber: 2, title: 'Apply for Verified Industry Apprenticeship Openings',
+        description: 'Browse vacancies by state, district, or manufacturing/service sector.',
+        requiredDocuments: [], estimatedEffort: '1-2 hours', isOnline: true,
+      },
+    ],
+    sourceUrl: 'https://www.apprenticeshipindia.gov.in', sourceAuthority: 'Ministry of Skill Development & Entrepreneurship',
+    sourceType: 'verified', sourceConfidence: 'High', lastVerified: '2026-08-30', version: '2026.1',
+    tags: ['naps', 'apprenticeship', 'employment', 'jobs', 'skill-india'],
+  },
+];

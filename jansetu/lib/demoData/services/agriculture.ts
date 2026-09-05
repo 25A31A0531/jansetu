@@ -1,0 +1,83 @@
+import { GovernmentService } from '../../types';
+
+export const AGRICULTURE_SERVICES: GovernmentService[] = [
+  {
+    id: 'pm_fasal_bima_yojana',
+    name: 'Pradhan Mantri Fasal Bima Yojana (PMFBY) - Crop Damage Claim',
+    department: 'Department of Agriculture & Farmers Welfare',
+    authority: 'Ministry of Agriculture and Farmers Welfare, Govt of India',
+    category: 'agriculture', secondaryCategories: ['disaster', 'financial_assistance'],
+    description: 'Comprehensive risk insurance providing financial relief for crop loss caused by unseasonal heavy rain, cyclone, flood, or drought.',
+    benefitsSummary: 'Claim settlement calculated against sum insured for yield loss exceeding threshold.',
+    jurisdictionLevel: 'CENTRAL', applicableStates: ['ALL'], residenceRequired: false,
+    studyLocationEligible: false, employmentLocationEligible: false, propertyLocationEligible: false,
+    agricultureLocationEligible: true, businessLocationEligible: false,
+    status: 'ACTIVE', effectiveFrom: '2016-02-18',
+    officialVerificationStatus: 'OFFICIALLY_VERIFIED',
+    verificationEvidence: 'OFFICIAL_PORTAL',
+    eligibleCategories: ['General', 'OBC', 'SC', 'ST', 'EWS'],
+    applicationUrl: 'https://pmfby.gov.in',
+    eligibilityRules: [
+      { field: 'isFarmer', operator: 'boolean_true', value: true, label: 'Owner cultivator or registered tenant farmer with crop sown', isMandatory: true },
+    ],
+    requiredDocuments: ['aadhaar', 'land_patta_passbook', 'bank_passbook'],
+    steps: [
+      {
+        stepNumber: 1, title: 'Intimate Crop Loss within 72 Hours',
+        description: 'Crucial: Report localized crop damage (rain/cyclone) within 72 hours via Crop Insurance App, toll-free 14447, or local Agriculture Officer.',
+        requiredDocuments: ['aadhaar'], estimatedEffort: 'Immediate (Within 72 hrs)', isOnline: true, portalUrl: 'https://pmfby.gov.in',
+        tip: 'Upload GPS-tagged photos of inundated/lodged crop in the field.',
+      },
+      {
+        stepNumber: 2, title: 'Joint Field Loss Assessment Survey',
+        description: 'Agriculture officer and insurance surveyor inspect the damaged field.',
+        requiredDocuments: ['land_patta_passbook'], estimatedEffort: '3-7 days', isOnline: false,
+        offlineOffice: 'Village Agriculture Assistant / Rythu Bharosa Kendra',
+      },
+      {
+        stepNumber: 3, title: 'DBT Claim Settlement',
+        description: 'Insurance compensation credited directly to bank account.',
+        requiredDocuments: ['bank_passbook'], estimatedEffort: '15-30 days', isOnline: true,
+      },
+    ],
+    sourceUrl: 'https://pmfby.gov.in', sourceAuthority: 'Ministry of Agriculture and Farmers Welfare',
+    sourceType: 'verified', sourceConfidence: 'High', lastVerified: '2026-08-30', version: '2026.1',
+    tags: ['crop-insurance', 'farmer', 'pmfby', 'agriculture', 'rain-damage', 'cyclone'],
+  },
+  {
+    id: 'pm_kisan_samman_nidhi',
+    name: 'PM-KISAN (Pradhan Mantri Kisan Samman Nidhi)',
+    department: 'Department of Agriculture & Farmers Welfare',
+    authority: 'Ministry of Agriculture and Farmers Welfare, Govt of India',
+    category: 'agriculture', secondaryCategories: ['financial_assistance'],
+    description: 'Income support of ₹6,000 per year in three 4-monthly installments of ₹2,000 directly to landholding farmer families.',
+    benefitsSummary: '₹6,000 / year direct transfer to Aadhaar-seeded bank account.',
+    jurisdictionLevel: 'CENTRAL', applicableStates: ['ALL'], residenceRequired: false,
+    studyLocationEligible: false, employmentLocationEligible: false, propertyLocationEligible: false,
+    agricultureLocationEligible: true, businessLocationEligible: false,
+    status: 'ACTIVE', effectiveFrom: '2018-12-01',
+    officialVerificationStatus: 'OFFICIALLY_VERIFIED',
+    verificationEvidence: 'OFFICIAL_PORTAL',
+    eligibleCategories: ['General', 'OBC', 'SC', 'ST', 'EWS'],
+    applicationUrl: 'https://pmkisan.gov.in',
+    eligibilityRules: [
+      { field: 'isFarmer', operator: 'boolean_true', value: true, label: 'Must own cultivable agricultural land in revenue records', isMandatory: true },
+    ],
+    requiredDocuments: ['aadhaar', 'land_patta_passbook', 'bank_passbook'],
+    steps: [
+      {
+        stepNumber: 1, title: 'Complete Aadhaar e-KYC on PM-KISAN Portal',
+        description: 'Complete OTP/Biometric e-KYC on pmkisan.gov.in.',
+        requiredDocuments: ['aadhaar'], estimatedEffort: '10 minutes', isOnline: true, portalUrl: 'https://pmkisan.gov.in',
+      },
+      {
+        stepNumber: 2, title: 'Verify Land Record Seeding',
+        description: 'Ensure State Agriculture Department has seeded land title record.',
+        requiredDocuments: ['land_patta_passbook'], estimatedEffort: '1-2 days', isOnline: true,
+      },
+    ],
+    sourceUrl: 'https://pmkisan.gov.in', sourceAuthority: 'Ministry of Agriculture, Govt of India',
+    sourceType: 'verified', sourceConfidence: 'High', lastVerified: '2026-08-30', version: '2026.1',
+    tags: ['pmkisan', 'farmer', 'agriculture', 'income-support'],
+  },
+];

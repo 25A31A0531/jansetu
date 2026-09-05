@@ -1,0 +1,88 @@
+import { GovernmentService } from '../../types';
+
+export const DISASTER_SERVICES: GovernmentService[] = [
+  {
+    id: 'sdrf_cyclone_housing_relief',
+    name: 'State Disaster Response Fund (SDRF) - Cyclone & Heavy Rain Housing Relief',
+    department: 'Disaster Management & Revenue Department',
+    authority: 'State Disaster Management Authority (SDMA) & Ministry of Home Affairs',
+    category: 'disaster', secondaryCategories: ['housing', 'financial_assistance'],
+    description: 'Immediate financial compensation and ex-gratia relief for houses damaged or destroyed during cyclones, heavy rainfall, and natural calamities under SDRF/NDRF guidelines.',
+    benefitsSummary: '₹1,20,000 to ₹1,30,000 for fully collapsed houses, ₹5,000 to ₹25,000 for partial damage, plus immediate clothing/household grain ration kits.',
+    jurisdictionLevel: 'STATE', applicableStates: ['ALL'], residenceRequired: false,
+    studyLocationEligible: false, employmentLocationEligible: false, propertyLocationEligible: true,
+    agricultureLocationEligible: false, businessLocationEligible: false,
+    jurisdictionConditions: 'Relief is disbursed based on the geographic location of the damaged property, validated by the local Tahsildar / District Collector.',
+    status: 'ACTIVE', effectiveFrom: '2020-01-01',
+    officialVerificationStatus: 'OFFICIALLY_VERIFIED',
+    verificationEvidence: 'OFFICIAL_PORTAL',
+    eligibleCategories: ['General', 'OBC', 'SC', 'ST', 'EWS'],
+    eligibilityRules: [
+      { field: 'hasHouseDamage', operator: 'boolean_true', value: true, label: 'House structure damaged or inundated due to notified cyclone/calamity', isMandatory: true },
+    ],
+    requiredDocuments: ['aadhaar', 'disaster_damage_report', 'bank_passbook'],
+    steps: [
+      {
+        stepNumber: 1, title: 'Notify Village Revenue Officer (VRO) / Ward Secretariat',
+        description: 'Report the property damage to the local Village/Ward Secretariat or Village Revenue Officer within 72 hours of the calamity.',
+        requiredDocuments: ['aadhaar'], estimatedEffort: '1-2 days', isOnline: false,
+        offlineOffice: 'Village / Ward Secretariat or Tahsildar Office',
+        tip: 'Capture timestamped photos of the damaged walls, roof, and water level before clearing debris.',
+      },
+      {
+        stepNumber: 2, title: 'Joint Field Enumeration & Panchanama Survey',
+        description: 'Revenue Inspector and Panchayat Secretary visit the spot to record damage classification (Fully Collapsed / Severely Damaged / Inundated).',
+        requiredDocuments: ['disaster_damage_report'], estimatedEffort: '3-5 business days', isOnline: false,
+        offlineOffice: 'District Disaster Management Authority (DDMA)',
+      },
+      {
+        stepNumber: 3, title: 'Social Audit Verification & Ex-Gratia DBT Release',
+        description: 'Approved beneficiary compensation list is displayed at the Secretariat and funds credited directly via Aadhaar-linked DBT.',
+        requiredDocuments: ['bank_passbook'], estimatedEffort: '7-14 business days', isOnline: true,
+      },
+    ],
+    sourceUrl: 'https://ndma.gov.in', sourceAuthority: 'National Disaster Management Authority (NDMA) & State SDMA',
+    sourceType: 'verified', sourceConfidence: 'High', lastVerified: '2026-08-30', version: '2026.1',
+    tags: ['disaster', 'cyclone', 'flood', 'house-damage', 'sdrf', 'ndrf', 'compensation', 'rain'],
+  },
+  {
+    id: 'disaster_house_reconstruction',
+    name: 'Disaster Pucca House Reconstruction Assistance (PMAY Special Component)',
+    department: 'Department of Rural Development / Housing',
+    authority: 'Ministry of Rural Development & State Housing Corporations',
+    category: 'housing', secondaryCategories: ['disaster', 'financial_assistance'],
+    description: 'Special housing reconstruction sanction for eligible families whose kutcha/pucca houses were completely demolished by natural calamities.',
+    benefitsSummary: '₹1.50 Lakh financial grant released in stage-wise geo-tagged construction installments.',
+    jurisdictionLevel: 'CENTRAL', applicableStates: ['ALL'], residenceRequired: false,
+    studyLocationEligible: false, employmentLocationEligible: false, propertyLocationEligible: true,
+    agricultureLocationEligible: false, businessLocationEligible: false,
+    status: 'ACTIVE', effectiveFrom: '2021-04-01',
+    officialVerificationStatus: 'OFFICIALLY_VERIFIED',
+    verificationEvidence: 'OFFICIAL_PORTAL',
+    eligibleCategories: ['General', 'OBC', 'SC', 'ST', 'EWS'],
+    eligibilityRules: [
+      { field: 'hasHouseDamage', operator: 'boolean_true', value: true, label: 'House completely collapsed in notified disaster list', isMandatory: true },
+    ],
+    requiredDocuments: ['aadhaar', 'disaster_damage_report', 'bank_passbook', 'residence_cert'],
+    steps: [
+      {
+        stepNumber: 1, title: 'Inclusion in District Calamity Housing Sanction List',
+        description: 'District Collector endorses list of damaged homes forwarded by Tahsildar to State Housing Corporation.',
+        requiredDocuments: ['disaster_damage_report'], estimatedEffort: '1-2 weeks', isOnline: false,
+      },
+      {
+        stepNumber: 2, title: 'Geo-tagging of Reconstruction Stages',
+        description: 'Engineers inspect foundation, lintel, and roof construction stages with geo-tagged mobile app.',
+        requiredDocuments: [], estimatedEffort: 'Periodic over construction', isOnline: false,
+      },
+      {
+        stepNumber: 3, title: 'Direct DBT Installment Sanction',
+        description: 'Funds credited directly to bank account at each verified construction milestone.',
+        requiredDocuments: ['bank_passbook'], estimatedEffort: 'Stage-wise release', isOnline: true,
+      },
+    ],
+    sourceUrl: 'https://pmayg.nic.in', sourceAuthority: 'Ministry of Rural Development',
+    sourceType: 'verified', sourceConfidence: 'High', lastVerified: '2026-08-30', version: '2025.2',
+    tags: ['housing', 'disaster', 'reconstruction', 'pmay', 'pucca-house'],
+  },
+];

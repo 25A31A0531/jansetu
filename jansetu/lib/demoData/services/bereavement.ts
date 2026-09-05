@@ -1,0 +1,78 @@
+import { GovernmentService } from '../../types';
+
+export const BEREAVEMENT_SERVICES: GovernmentService[] = [
+  {
+    id: 'death_certificate_registration',
+    name: 'Civil Death Registration & Official Certificate Issuance',
+    department: 'Office of the Registrar General of India & State Revenue Depts',
+    authority: 'Ministry of Home Affairs, Govt of India',
+    category: 'bereavement', secondaryCategories: ['identity_documents'],
+    description: 'Mandatory civil registration within 21 days of occurrence to obtain legally valid Death Certificate under the RBD Act.',
+    benefitsSummary: 'Foundational document required for all insurance claims, bank succession, property title transfer, and family pensions.',
+    jurisdictionLevel: 'CENTRAL', applicableStates: ['ALL'], residenceRequired: false,
+    studyLocationEligible: false, employmentLocationEligible: false, propertyLocationEligible: false,
+    agricultureLocationEligible: false, businessLocationEligible: false, status: 'ACTIVE', effectiveFrom: '1969-01-01',
+    officialVerificationStatus: 'OFFICIALLY_VERIFIED',
+    verificationEvidence: 'OFFICIAL_PORTAL',
+    eligibleCategories: ['General', 'OBC', 'SC', 'ST', 'EWS'],
+    applicationUrl: 'https://crsorgi.gov.in',
+    eligibilityRules: [], requiredDocuments: ['aadhaar', 'death_certificate'],
+    steps: [
+      {
+        stepNumber: 1, title: 'Collect Hospital Cause of Death Slip / Cremation Receipt',
+        description: 'Obtain Form 4/4A from hospital or burial ground receipt.',
+        requiredDocuments: [], estimatedEffort: '1 day', isOnline: false, offlineOffice: 'Hospital / Cremation Ground',
+      },
+      {
+        stepNumber: 2, title: 'Register Event on Civil Registration System (CRS)',
+        description: 'Submit Form 2 within 21 days on crsorgi.gov.in or at local Secretariat.',
+        requiredDocuments: ['aadhaar'], estimatedEffort: '30 minutes', isOnline: true, portalUrl: 'https://crsorgi.gov.in',
+      },
+      {
+        stepNumber: 3, title: 'Download Digitally Signed Death Certificate',
+        description: 'Download signed certificate with QR code for legal inheritance submissions.',
+        requiredDocuments: ['death_certificate'], estimatedEffort: '2-5 business days', isOnline: true,
+      },
+    ],
+    sourceUrl: 'https://crsorgi.gov.in', sourceAuthority: 'Office of the Registrar General of India',
+    sourceType: 'verified', sourceConfidence: 'High', lastVerified: '2026-08-30', version: '2026.1',
+    tags: ['death-certificate', 'crs', 'bereavement', 'legal'],
+  },
+  {
+    id: 'legal_heir_family_certificate',
+    name: 'Legal Heir / Family Member Certificate (Varasulu Dhruvikaran)',
+    department: 'Revenue & Disaster Management Department',
+    authority: 'State Revenue Administration / Tahsildar',
+    category: 'bereavement', secondaryCategories: ['identity_documents'],
+    description: 'Establishes surviving immediate family members (spouse, children, parents) for transferring assets, bank balances, and claiming dues.',
+    benefitsSummary: 'Unlocks bank claim settlement, PF/Gratuity claims, and property succession.',
+    jurisdictionLevel: 'STATE', applicableStates: ['ALL'], residenceRequired: true,
+    studyLocationEligible: false, employmentLocationEligible: false, propertyLocationEligible: false,
+    agricultureLocationEligible: false, businessLocationEligible: false, status: 'ACTIVE', effectiveFrom: '2015-01-01',
+    officialVerificationStatus: 'OFFICIALLY_VERIFIED',
+    verificationEvidence: 'OFFICIAL_PORTAL',
+    eligibleCategories: ['General', 'OBC', 'SC', 'ST', 'EWS'],
+    applicationUrl: 'https://serviceonline.gov.in',
+    eligibilityRules: [], requiredDocuments: ['death_certificate', 'aadhaar', 'residence_cert', 'legal_heir_cert'],
+    steps: [
+      {
+        stepNumber: 1, title: 'Ensure Official Death Certificate is Issued',
+        description: 'A registered Death Certificate is a prerequisite before applying for Legal Heir.',
+        requiredDocuments: ['death_certificate'], estimatedEffort: 'Prerequisite', isOnline: true,
+      },
+      {
+        stepNumber: 2, title: 'Apply through State e-District / Meeseva Portal',
+        description: 'Submit family pedigree affidavit and Aadhaar cards of all surviving heirs.',
+        requiredDocuments: ['death_certificate', 'aadhaar', 'residence_cert'], estimatedEffort: '1 hour', isOnline: true, portalUrl: 'https://serviceonline.gov.in',
+      },
+      {
+        stepNumber: 3, title: 'Revenue Inspector (RI) Inquest & Certificate Issuance',
+        description: 'Field inquiry conducted to verify legal heirs followed by Tahsildar digital signature.',
+        requiredDocuments: ['legal_heir_cert'], estimatedEffort: '7-14 business days', isOnline: true,
+      },
+    ],
+    sourceUrl: 'https://serviceonline.gov.in', sourceAuthority: 'State Revenue Department',
+    sourceType: 'verified', sourceConfidence: 'High', lastVerified: '2026-08-30', version: '2026.1',
+    tags: ['legal-heir', 'succession', 'revenue', 'bereavement'],
+  },
+];
